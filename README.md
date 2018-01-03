@@ -4,6 +4,7 @@
 
 ## resources:
 + fastclick
++ http://blog.csdn.net/foralienzhou/article/details/52437929
 
 
 ## setSelectionRange:

@@ -3,6 +3,7 @@
   var global = global || this || self || window;
   var nx = global.nx || require('next-js-core2');
   var PLATFORM = global.navigator.platform;
+  var SPECIAL_TYPE_RE = /date|datetime|time|month|email/i;
   var deviceIsIOS = /iPhone|iPad|iPod/.test(PLATFORM);
 
   nx.domFocus = function (inElement) {
@@ -11,10 +12,7 @@
     if (
         deviceIsIOS
         && inElement.setSelectionRange
-        && inElement.type.indexOf('date') !== 0
-        && inElement.type !== 'time'
-        && inElement.type !== 'month'
-        && inElement.type !== 'email'
+        && SPECIAL_TYPE_RE.test(inElement.type)
     ) {
         length = inElement.value.length;
         inElement.setSelectionRange(length, length);
